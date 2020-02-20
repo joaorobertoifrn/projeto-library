@@ -1,0 +1,42 @@
+version: '3.4'
+services:
+  db:
+    image: joaoroberto/mysql-library-api
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      TZ: America/Recife
+      MYSQL_ROOT_PASSWORD: mh22xx
+      MYSQL_USER: root
+      MYSQL_PASSWORD: mh22xx
+      MYSQL_DATABASE: library-db
+    ports:
+      - 3306:3306
+    networks: 
+      - network
+  library-api:
+    image: joaoroberto/library-api
+    restart: always
+    build: ./backend/library-api
+    working_dir: /backend/library-api
+    environment:
+      TZ: America/Recife
+      SPRING_BOOT_ENVIRONMENT: prod
+    volumes:
+      - ./backend/library-api:/backend/library-api
+      - ~/.m2:/root/.m2
+    ports:
+      - 8080:8080
+    command: mvn clean spring-boot:run
+    links:
+      - db
+    depends_on:
+      - db
+    networks: 
+      - network
+networks: 
+    network:
+      driver: bridge

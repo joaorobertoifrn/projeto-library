@@ -1,0 +1,210 @@
+{
+  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "library-frontend": {
+      "root": "",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "tsConfig": "src/tsconfig.app.json",
+            "polyfills": "src/polyfills.ts",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              }
+            ],
+            "styles": [
+              {"input":"node_modules/admin-lte/bower_components/bootstrap/dist/css/bootstrap.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/font-awesome/css/font-awesome.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/Ionicons/css/ionicons.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"},
+              {"input":"node_modules/admin-lte/dist/css/AdminLTE.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/morris.js/morris.css"},
+              {"input":"node_modules/admin-lte/bower_components/jvectormap/jquery-jvectormap.css"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.css"},
+              {"input":"node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"},
+              {"input":"node_modules/admin-lte/dist/css/skins/skin-blue.min.css"}
+            ],
+            "scripts": [
+              {"input":"node_modules/admin-lte/bower_components/jquery/dist/jquery.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/jquery-ui/jquery-ui.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap/dist/js/bootstrap.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/datatables.net/js/jquery.dataTables.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/raphael/raphael.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/morris.js/morris.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"},
+              {"input":"node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"},
+              {"input":"node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"},
+              {"input":"node_modules/admin-lte/bower_components/jquery-knob/dist/jquery.knob.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/moment/min/moment.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.js"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"},
+              {"input":"node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/fastclick/lib/fastclick.js"},
+              {"input":"node_modules/admin-lte/dist/js/adminlte.min.js"},
+              {"input":"node_modules/admin-lte/dist/js/demo.js"},
+              {"input":"src/script-tabela.js"}
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "library-frontend:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "library-frontend:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "library-frontend:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "karmaConfig": "./karma.conf.js",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "src/tsconfig.spec.json",
+            "styles": [
+              {"input":"node_modules/admin-lte/bower_components/bootstrap/dist/css/bootstrap.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/font-awesome/css/font-awesome.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/Ionicons/css/ionicons.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"},
+              {"input":"node_modules/admin-lte/dist/css/AdminLTE.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/morris.js/morris.css"},
+              {"input":"node_modules/admin-lte/bower_components/jvectormap/jquery-jvectormap.css"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.css"},
+              {"input":"node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"},
+              {"input":"node_modules/admin-lte/dist/css/skins/skin-blue.min.css"}
+            ],
+            "scripts": [
+              {"input":"node_modules/admin-lte/bower_components/jquery/dist/jquery.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/jquery-ui/jquery-ui.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap/dist/js/bootstrap.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/datatables.net/js/jquery.dataTables.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/raphael/raphael.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/morris.js/morris.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"},
+              {"input":"node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"},
+              {"input":"node_modules/admin-lte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"},
+              {"input":"node_modules/admin-lte/bower_components/jquery-knob/dist/jquery.knob.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/moment/min/moment.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap-daterangepicker/daterangepicker.js"},
+              {"input":"node_modules/admin-lte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"},
+              {"input":"node_modules/admin-lte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"},
+              {"input":"node_modules/admin-lte/bower_components/fastclick/lib/fastclick.js"},
+              {"input":"node_modules/admin-lte/dist/js/adminlte.min.js"},
+              {"input":"node_modules/admin-lte/dist/js/demo.js"},
+              {"input":"src/script-tabela.js"}
+            ],
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              }
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "library-frontend-e2e": {
+      "root": "",
+      "projectType": "application",
+      "cli": {},
+      "schematics": {},
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "./protractor.conf.js",
+            "devServerTarget": "clinica-ui:serve"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {},
+  "schematics": {
+    "@schematics/angular:component": {
+      "prefix": "cli",
+      "styleext": "css"
+    },
+    "@schematics/angular:directive": {
+      "prefix": "cli"
+    }
+  }
+}

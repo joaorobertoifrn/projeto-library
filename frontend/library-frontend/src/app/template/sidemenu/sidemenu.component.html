@@ -1,0 +1,35 @@
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">Menu Navegação</li>
+        <li class="active treeview">
+          <a href="#">
+            <i class="fa fa-id-card"></i> <span>Cadastros</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li routerLinkActive="active" ><a [routerLink]="['/autor']"><i class="fa fa-circle-o"></i>Autores</a></li>
+            <li routerLinkActive="active" ><a [routerLink]="['/obra']"><i class="fa fa-circle-o"></i>Obras</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i> <span>Sistema</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li routerLinkActive="active" ><a [routerLink]="['/usuario']"><i class="fa fa-circle-o"></i>Usuário</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
